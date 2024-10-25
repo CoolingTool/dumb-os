@@ -26,6 +26,7 @@ modules:
       - mullvad-browser
     remove:
       - gnome-terminal
+      - gnome-terminal-nautilus
       - gnome-system-monitor
       - htop
       # removing firefox (in favor of the flatpak)
