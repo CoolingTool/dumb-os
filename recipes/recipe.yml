@@ -22,6 +22,7 @@ modules:
     repos:
       - https://repository.mullvad.net/rpm/stable/mullvad.repo
     install:
+      - fish
       - gnome-console
       - mullvad-browser
     remove:
