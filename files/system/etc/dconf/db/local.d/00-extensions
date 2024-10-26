@@ -1,5 +1,2 @@
 [org/gnome/shell]
 enabled-extensions=['background-logo@fedorahosted.org', 'middleclickclose@paolo.tranquilli.gmail.com', 'auto-activities@CleoMenezesJr.github.io', 'app-hider@lynith.dev']
-
-[org/gnome/shell/extensions/app-hider]
-hidden-apps=['nvidia-settings.desktop', 'org.gnome.Tour.desktop', 'fish.desktop']

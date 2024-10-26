@@ -4,7 +4,7 @@ name: dumb-os
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/silverblue-nvidia
 image-version: 41 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -28,11 +28,6 @@ modules:
       - nushell
       - android-tools
       - gnome-console
-      # Ensure GNOME Software is able to enroll secure boot
-      - akmods
-      - mokutil
-      - openssl
-      - kmodtool
     remove:
       - htop
       - nvtop
