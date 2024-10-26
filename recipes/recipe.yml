@@ -27,11 +27,9 @@ modules:
       - nushell
       - gnome-console
     remove:
-      - gnome-terminal
-      - gnome-terminal-nautilus
-      - gnome-system-monitor
-      - nvtop
       - htop
+      - nvtop
+      - gnome-system-monitor
       # removing firefox (in favor of the flatpak)
       - firefox
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
