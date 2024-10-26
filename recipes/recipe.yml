@@ -47,8 +47,8 @@ modules:
 
   - type: gnome-extensions
     install:
-      - middleclickclose@paolo.tranquilli.gmail.com
-      - auto-activities@CleoMenezesJr.github.io
+      - 352 # Quick Close in Overview: middleclickclose@paolo.tranquilli.gmail.com
+      - 5500 # Auto Activities: auto-activities@CleoMenezesJr.github.io
 
   - type: gschema-overrides
     include: ["zz1-enabled-extensions.gschema.override"]
