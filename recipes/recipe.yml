@@ -5,7 +5,7 @@ description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/silverblue-nvidia
-image-version: 40 # latest is also supported if you want new updates ASAP
+image-version: 41 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -30,6 +30,7 @@ modules:
       - gnome-terminal
       - gnome-terminal-nautilus
       - gnome-system-monitor
+      - nvtop
       - htop
       # removing firefox (in favor of the flatpak)
       - firefox
@@ -50,6 +51,6 @@ modules:
       # Quick Close in Overview: middleclickclose@paolo.tranquilli.gmail.com
       - 352 # Close windows with a middle click when in overview mode
       # Auto Activities: auto-activities@CleoMenezesJr.github.io
-      - 5500 # Exit activities menu when there are new popups/windows and vice versa.
+      - 5500 # Exit activities menu when a new window appears and vice versa.
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
