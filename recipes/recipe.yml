@@ -47,10 +47,9 @@ modules:
 
   - type: gnome-extensions
     install:
-      - 352 # Quick Close in Overview: middleclickclose@paolo.tranquilli.gmail.com
-      - 5500 # Auto Activities: auto-activities@CleoMenezesJr.github.io
-
-  - type: gschema-overrides
-    include: ["zz1-enabled-extensions.gschema.override"]
+      # Quick Close in Overview: middleclickclose@paolo.tranquilli.gmail.com
+      - 352 # Close windows with a middle click when in overview mode
+      # Auto Activities: auto-activities@CleoMenezesJr.github.io
+      - 5500 # Exit activities menu when there are new popups/windows and vice versa.
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
