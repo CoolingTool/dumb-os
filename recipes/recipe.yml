@@ -20,11 +20,12 @@ modules:
 
   - type: rpm-ostree
     repos:
-      - https://repository.mullvad.net/rpm/stable/mullvad.repo
+      - https://copr.fedorainfracloud.org/coprs/atim/nushell/repo/fedora-%OS_VERSION%/atim-nushell-fedora-%OS_VERSION%.repo
     install:
+      - zsh
       - fish
+      - nushell
       - gnome-console
-      - mullvad-browser
     remove:
       - gnome-terminal
       - gnome-terminal-nautilus
@@ -43,5 +44,13 @@ modules:
       - Papers (Document Viewer): org.gnome.Papers
       - Showtime (Video Player): org.gnome.Showtime
       - Mission Center (System Monitor): io.missioncenter.MissionCenter
+
+  - type: gnome-extensions
+    install:
+      - middleclickclose@paolo.tranquilli.gmail.com
+      - auto-activities@CleoMenezesJr.github.io
+
+  - type: gschema-overrides
+    include: ["zz1-enabled-extensions.gschema.override"]
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
