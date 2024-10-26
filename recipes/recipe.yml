@@ -4,7 +4,7 @@ name: dumb-os
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-nvidia
+base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 41 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -22,13 +22,21 @@ modules:
     repos:
       - https://copr.fedorainfracloud.org/coprs/atim/nushell/repo/fedora-%OS_VERSION%/atim-nushell-fedora-%OS_VERSION%.repo
     install:
+      # CLI
       - zsh
       - fish
       - nushell
+      - android-tools
       - gnome-console
+      # Ensure GNOME Software is able to enroll secure boot
+      - akmods
+      - mokutil
+      - openssl
+      - kmodtool
     remove:
       - htop
       - nvtop
+      - ptyxis
       - gnome-system-monitor
       # removing firefox (in favor of the flatpak)
       - firefox
@@ -50,5 +58,7 @@ modules:
       - 352 # Close windows with a middle click when in overview mode
       # Auto Activities: auto-activities@CleoMenezesJr.github.io
       - 5500 # Exit activities menu when a new window appears and vice versa.
+      # App Hider: app-hider@lynith.dev
+      - 5895 # Hide apps in GNOME's app menu.
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
