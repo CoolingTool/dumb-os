@@ -32,20 +32,24 @@ modules:
       - htop
       - nvtop
       - ptyxis
+      - dconf-editor
       - gnome-system-monitor
       # removing firefox (in favor of the flatpak)
       - firefox
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
 
   - type: brew
+    nofile-limits: true
 
   - type: yafti
     custom-flatpaks:
-      - Builder: org.gnome.Builder
+      - GNOME Builder: org.gnome.Builder
+      - Dconf Editor: ca.desrt.dconf-editor
       - Decibles (Audio Player): org.gnome.Decibels
       - Papers (Document Viewer): org.gnome.Papers
       - Showtime (Video Player): org.gnome.Showtime
       - Mission Center (System Monitor): io.missioncenter.MissionCenter
+      - KolourPaint (KDE Paint Program): org.kde.KolourPaint
 
   - type: gnome-extensions
     install:
