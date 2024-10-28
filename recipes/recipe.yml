@@ -20,17 +20,28 @@ modules:
 
   - type: rpm-ostree
     repos:
+      - https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo
       - https://copr.fedorainfracloud.org/coprs/atim/nushell/repo/fedora-%OS_VERSION%/atim-nushell-fedora-%OS_VERSION%.repo
     install:
-      # CLI
+      # King's Cross and some shells. Never forget to kgx --set-shell=fish
+      - gnome-console
       - zsh
       - fish
+      - dash
       - nushell
+      # Not found on Homebrew
+      - mpd
       - android-tools
-      - gnome-console
+      - cloudflare-warp
     remove:
+      # To reduce redundancy, use flatpak or brew to install these packages 
       - firefox
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      - htop
+      - nvtop
+      - ptyxis
+      - dconf-editor
+
 
   - type: brew
     nofile-limits: true
@@ -49,8 +60,6 @@ modules:
     install:
       # Quick Close in Overview: middleclickclose@paolo.tranquilli.gmail.com
       - 352 # Close windows with a middle click when in overview mode
-      # Auto Activities: auto-activities@CleoMenezesJr.github.io
-      - 5500 # Exit activities menu when a new window appears and vice versa.
       # App Hider: app-hider@lynith.dev
       - 5895 # Hide apps in GNOME's app menu.
 
