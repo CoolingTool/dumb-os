@@ -18,6 +18,10 @@ modules:
   - type: bling
     install: ["ublue-update"]
 
+  - type: scripts
+    scripts:
+      - install-mpd.sh
+
   - type: rpm-ostree
     repos:
       - https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo
