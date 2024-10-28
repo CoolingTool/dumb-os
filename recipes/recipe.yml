@@ -18,7 +18,7 @@ modules:
   - type: bling
     install: ["ublue-update"]
 
-  - type: scripts
+  - type: script
     scripts:
       - install-mpd.sh
 
