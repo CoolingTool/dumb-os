@@ -30,7 +30,6 @@ modules:
       - dash
       - nushell
       # Not found on Homebrew
-      - mpd
       - android-tools
       - cloudflare-warp
     remove:
