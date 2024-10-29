@@ -1,0 +1,14 @@
+[org/gnome/settings-daemon/plugins/power]
+power-button-action='nothing'
+
+[org/gnome/desktop/interface]
+show-battery-percentage=true
+
+[org/gnome/desktop/interface]
+gtk-theme='adw-gtk3'
+
+[com/github/stunkymonkey/nautilus-open-any-terminal]
+terminal=['kgx']
+
+[org/gnome/Console]
+shell=['fish']
