@@ -21,7 +21,7 @@ fi
 git clone https://github.com/Stunkymonkey/nautilus-open-any-terminal.git
 cd nautilus-open-any-terminal
 
-sed 's/gnome-terminal/kgx/g' nautilus_open_any_terminal/schemas/com.github.stunkymonkey.nautilus-open-any-terminal.gschema.xml
+sed -i 's/gnome-terminal/kgx/g' nautilus_open_any_terminal/schemas/com.github.stunkymonkey.nautilus-open-any-terminal.gschema.xml
 
 make
 
