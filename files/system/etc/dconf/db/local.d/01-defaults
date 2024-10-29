@@ -7,8 +7,5 @@ show-battery-percentage=true
 [org/gnome/desktop/interface]
 gtk-theme='adw-gtk3'
 
-[com/github/stunkymonkey/nautilus-open-any-terminal]
-terminal='kgx'
-
 [org/gnome/Console]
 shell=['fish']

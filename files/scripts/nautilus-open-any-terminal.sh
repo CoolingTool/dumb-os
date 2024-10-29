@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -oue pipefail
+
 # https://aur.archlinux.org/packages/nautilus-open-any-terminal
 if ! rpm -q nautilus-python &> /dev/null; then
   echo "Installing \"nautilus-python\" package, which is necessary for nautilus-open-any-terminal to function"
@@ -15,11 +17,12 @@ if ! command -v make &> /dev/null; then
 fi
 
 
-set -oue pipefail
-
 # https://github.com/Stunkymonkey/nautilus-open-any-terminal#from-source
 git clone https://github.com/Stunkymonkey/nautilus-open-any-terminal.git
 cd nautilus-open-any-terminal
+
+sed 's/gnome-terminal/kgx/g' nautilus_open_any_terminal/schemas/com.github.stunkymonkey.nautilus-open-any-terminal.gschema.xml
+
 make
 
 make install schema
