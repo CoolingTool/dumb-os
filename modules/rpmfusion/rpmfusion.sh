@@ -29,7 +29,7 @@ fi
 
 # INSTALL_PATH=("${INSTALL[@]/#/\/tmp/rpms/kmods/*}")
 # INSTALL_PATH=("${INSTALL_PATH[@]/%/*.rpm}")
-INSTALL_STR=$(echo "${INSTALL_PATH[*]}" | tr -d '\n')
+INSTALL_STR=$(echo "${INSTALL[*]}" | tr -d '\n')
 
 # Universal Blue switched from RPMFusion to negativo17 repos
 # negativo17 is not compatible with RPMFusion, so we temporarily install then uninstall it
