@@ -18,7 +18,8 @@ if ! rpm -q python3-pip &> /dev/null; then
   rpm-ostree install python3-pip
 fi
 # Worse idea
-pip install click-aliases
+echo "Installing \"click-aliases\" via pip, which is necessary for omen-fan to function"
+pip install click-aliases --root-user-action
 
 git clone https://github.com/alou-S/omen-fan
 
