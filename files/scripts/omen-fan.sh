@@ -12,6 +12,8 @@ if ! rpm -q python3-tomlkit &> /dev/null; then
   rpm-ostree install python3-tomlkit
 fi
 
+set -x
+
 # Bad idea
 if ! rpm -q python3-pip &> /dev/null; then
   echo "Installing \"python3-pip\" package, which is necessary for omen-fan to function"
@@ -19,7 +21,8 @@ if ! rpm -q python3-pip &> /dev/null; then
 fi
 # Worse idea
 echo "Installing \"click-aliases\" via pip, which is necessary for omen-fan to function"
-pip install click-aliases --root-user-action=ignore
+rpm-ostree uninstall python3-click
+pip install click click-aliases --root-user-action=ignore
 
 git clone https://github.com/alou-S/omen-fan
 

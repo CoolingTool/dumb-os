@@ -16,6 +16,7 @@ if ! command -v make &> /dev/null; then
   rpm-ostree install make
 fi
 
+set -x
 
 # https://github.com/Stunkymonkey/nautilus-open-any-terminal#from-source
 git clone https://github.com/Stunkymonkey/nautilus-open-any-terminal.git
