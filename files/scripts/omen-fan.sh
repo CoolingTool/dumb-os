@@ -12,6 +12,14 @@ if ! rpm -q python3-tomlkit &> /dev/null; then
   rpm-ostree install python3-tomlkit
 fi
 
+# Bad idea
+if ! rpm -q python3-pip &> /dev/null; then
+  echo "Installing \"python3-pip\" package, which is necessary for omen-fan to function"
+  rpm-ostree install python3-pip
+fi
+# Worse idea
+pip install click-aliases
+
 git clone https://github.com/alou-S/omen-fan
 
 install -T -m 755 omen-fan/omen-fan.py /usr/bin/omen-fan
