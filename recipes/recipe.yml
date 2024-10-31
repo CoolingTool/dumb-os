@@ -54,8 +54,6 @@ modules:
       - ptyxis
       - dconf-editor
       - gnome-shell-extension-supergfxctl-gex
-      - groff-base # doesn't create PDFs out of the box, trash! get rid of it! use the brew instead 
-
 
   - type: brew
     nofile-limits: true
