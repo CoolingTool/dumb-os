@@ -12,13 +12,14 @@ if ! rpm -q python3-tomlkit &> /dev/null; then
   rpm-ostree install python3-tomlkit
 fi
 
-set -x
-
 # Bad idea
 if ! rpm -q python3-pip &> /dev/null; then
   echo "Installing \"python3-pip\" package, which is necessary for omen-fan to function"
   rpm-ostree install python3-pip
 fi
+
+set -x
+
 # Worse idea
 echo "Installing \"click-aliases\" via pip, which is necessary for omen-fan to function"
 rpm-ostree uninstall python3-click
