@@ -19,7 +19,7 @@ if ! rpm -q python3-pip &> /dev/null; then
 fi
 # Worse idea
 echo "Installing \"click-aliases\" via pip, which is necessary for omen-fan to function"
-pip install click-aliases --root-user-action
+pip install click-aliases --root-user-action=ignore
 
 git clone https://github.com/alou-S/omen-fan
 
