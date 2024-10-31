@@ -34,7 +34,7 @@ INSTALL_STR=$(echo "${INSTALL[*]}" | tr -d '\n')
 # Universal Blue switched from RPMFusion to negativo17 repos
 # negativo17 is not compatible with RPMFusion, so we temporarily install then uninstall it
 
-echo "Installing akmods"
+echo "Installing RPM Fusion packages"
 echo "Installing: $(echo "${INSTALL[*]}" | tr -d '\n')"
 INSTALL_RPM_FUSION
 rpm-ostree install ${INSTALL_STR}
