@@ -21,6 +21,7 @@ modules:
   - type: script
     scripts:
       - nautilus-open-any-terminal.sh
+      - omen-fan.sh
     snippets:
       - "dconf update" # might be necessary, dconf Editor won't show my defaults cause it's dumb[-os]
 
