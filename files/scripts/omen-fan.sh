@@ -7,6 +7,11 @@ set -oue pipefail
 #
 # Not for these people though https://redd.it/1e5bh6x/
 
+if ! rpm -q python3-tomlkit &> /dev/null; then
+  echo "Installing \"python3-tomlkit\" package, which is necessary for omen-fan to function"
+  rpm-ostree install python3-tomlkit
+fi
+
 git clone https://github.com/alou-S/omen-fan
 
 install -T -m 755 omen-fan/omen-fan.py /usr/bin/omen-fan

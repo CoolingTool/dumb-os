@@ -23,7 +23,7 @@ modules:
       - nautilus-open-any-terminal.sh
       - omen-fan.sh
     snippets:
-      - "dconf update" # might be necessary, dconf Editor won't show my defaults cause it's dumb[-os]
+      - "dconf update" # might be necessary, dconf Editor won't show my defaults either way cause it's dumb[-os]
 
   - type: rpmfusion
     install:
@@ -54,6 +54,7 @@ modules:
       - ptyxis
       - dconf-editor
       - gnome-shell-extension-supergfxctl-gex
+      - groff-base # doesn't create PDFs out of the box, trash! get rid of it! use the brew instead 
 
 
   - type: brew
