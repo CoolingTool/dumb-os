@@ -1,8 +1,8 @@
 diff --git a/install.sh b/install.sh
-index fbb83cc..8dd921b 100755
+index fbb83cc..38acb15 100755
 --- a/install.sh
 +++ b/install.sh
-@@ -38,18 +38,6 @@ MOD_SRC_DIR="/usr/src/$MODULE_NAME-$VERSION"
+@@ -38,28 +38,18 @@ MOD_SRC_DIR="/usr/src/$MODULE_NAME-$VERSION"
  
  if ! (dkms status 2>/dev/null | grep -q "$MODULE_NAME/${VERSION}.*installed"); then # if the module is already installed in DKMS
  
@@ -21,7 +21,10 @@ index fbb83cc..8dd921b 100755
    if [[ ! -d "$MOD_SRC_DIR" ]]; then
      mkdir -p "$MOD_SRC_DIR"
      cp -R "$PWD/src/" "$MOD_SRC_DIR/src"
-@@ -58,8 +46,8 @@ if ! (dkms status 2>/dev/null | grep -q "$MODULE_NAME/${VERSION}.*installed"); t
+   fi
+ 
++  set -x
++
    cp dkms.conf "$MOD_SRC_DIR/dkms.conf"
    sed -i "s/PACKAGE_VERSION=.*/PACKAGE_VERSION=\"$VERSION\"/" "$MOD_SRC_DIR/dkms.conf"
    dkms add -m "$MODULE_NAME" -v "$VERSION"
