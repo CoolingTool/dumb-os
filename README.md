@@ -2,10 +2,14 @@
 
 See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository.
 
-This is my personal OS image for the HP OMEN X16 (HP OMEN by HP Laptop 16-b0xxx). It doesn't have any crazy customizations so far except things I stole from [Bluefin](https://projectbluefin.io/) and [https://bazzite.gg/](Bazzite). I don't know how to build images locally so instead I rely on github.dev and test everything on the main GitHub action. I wouldn't recommend running this image yourself.
+This is my personal OS image for the HP OMEN X16 (`HP OMEN by HP Laptop 16-b0xxx`).
+It doesn't have any crazy customizations so far except things I stole from [Bluefin](https://projectbluefin.io/) and [Bazzite](https://bazzite.gg/).
+I don't know how to build images locally so instead I rely on [github.dev](https://github.dev/CoolingTool/dumb-os) and test everything on the main GitHub action.
+I wouldn't recommend running this image yourself.
 
 # Secure Boot
-It was as easy as having Secure Boot enabled in the bios, running `ujust enroll-secure-boot-key` in Console and following the instructions. I can't test that again though cause the "Clear all Secure Boot keys" button in BIOS doesn't seem to do anything.
+It was as easy as having Secure Boot enabled in the bios, running `ujust enroll-secure-boot-key` in Console and following the instructions.
+I can't test that again though cause the "Clear all Secure Boot keys" button in BIOS doesn't seem to do anything.
 
 ## ISO
 
