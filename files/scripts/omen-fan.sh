@@ -18,11 +18,9 @@ mkdir -p /usr/include && cd /usr/include
 git clone https://github.com/alou-S/omen-fan && cd omen-fan
 
 python3 -m venv env
-source env/bin/activate
-python3 -m pip install click tomlkit click-aliases
-deactivate
+./env/bin/python3 -m pip install click tomlkit click-aliases
 
-sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/include\/omen-fan\/env\/bin\/python3' *.py
+sed -i 's/#!\/usr\/bin\/env /#!\/usr\/include\/omen-fan\/env\/bin\//' *.py
 
 install -T -m 755 omen-fan.py /usr/bin/omen-fan
 install -T -m 755 omen-fand.py /usr/bin/omen-fand
