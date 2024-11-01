@@ -4,16 +4,12 @@ name: dumb-os
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/silverblue-nvidia
 image-version: 41 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - type: containerfile
-    snippets:
-      - COPY --from=ghcr.io/ublue-os/akmods-nvidia:main-41  / /tmp/
-
   - type: files
     files:
       - source: system
@@ -26,11 +22,6 @@ modules:
     scripts:
       - omen-fan.sh
       - nautilus-open-any-terminal.sh
-
-  - type: akmods
-    base: main
-    install:
-      - nvidia
 
   - type: rpmfusion
     install:
