@@ -11,12 +11,15 @@ if ! rpm -q rpmfusion-free-release &>/dev/null && ! rpm -q rpmfusion-nonfree-rel
   previously_not_installed_rpm_fusion=true
 else
   previously_not_installed_rpm_fusion=false
+  sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/rpmfusion-*.repo
 fi
 }
 
 UNINSTALL_RPM_FUSION() {
 if "${previously_not_installed_rpm_fusion}"; then
   rpm-ostree uninstall rpmfusion-free-release rpmfusion-nonfree-release
+else
+  sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/rpmfusion-*.repo
 fi
 }
 
