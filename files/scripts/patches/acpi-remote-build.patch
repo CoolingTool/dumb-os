@@ -1,5 +1,5 @@
 diff --git a/install.sh b/install.sh
-index fbb83cc..0ed40fd 100755
+index fbb83cc..8dd921b 100755
 --- a/install.sh
 +++ b/install.sh
 @@ -38,18 +38,6 @@ MOD_SRC_DIR="/usr/src/$MODULE_NAME-$VERSION"
@@ -28,7 +28,7 @@ index fbb83cc..0ed40fd 100755
 -  dkms build -m "$MODULE_NAME" -v "$VERSION"
 -  dkms install -m "$MODULE_NAME" -v "$VERSION"
 +  dkms build -m "$MODULE_NAME" -v "$VERSION" -k $KERNEL_VERSION
-+  dkms install -m "$MODULE_NAME" -v "$VERSION" -k $KERNEL_VERSION
++  dkms install -m "$MODULE_NAME" -v "$VERSION" -k $KERNEL_VERSION --no-depmod
  
    # module auto-loading
    echo "acpi_ec" > /etc/modules-load.d/acpi_ec.conf
