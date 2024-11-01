@@ -29,6 +29,8 @@ git clone https://github.com/saidsay-so/acpi_ec && cd acpi_ec
 
 git apply $CONFIG_DIRECTORY/scripts/patches/acpi-no-mok.patch
 
+ls /lib/modules
+
 ./install.sh
 
 # Installing omen-fan
