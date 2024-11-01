@@ -3,13 +3,22 @@
 set -oue pipefail
 
 # https://wiki.archlinux.org/title/HP_Omen_16-c0140AX#Fan_control_Script
-# No install instructions, but that's fine, it should be trival to do so
-#
-# Not for these people though https://redd.it/1e5bh6x/
 
 if ! rpm -q python3 &> /dev/null; then
   echo "Installing \"python3\" package, which is necessary for omen-fan to function"
   rpm-ostree install python3
+fi
+if ! rpm -q kernel-devel &> /dev/null; then
+  echo "Installing \"kernel-devel\" package, which is necessary for omen-fan to function"
+  rpm-ostree install kernel-devel
+fi
+if ! rpm -q dkms &> /dev/null; then
+  echo "Installing \"dkms\" package, which is necessary for omen-fan to function"
+  rpm-ostree install dkms
+fi
+if ! rpm -q make &> /dev/null; then
+  echo "Installing \"make\" package, which is necessary for omen-fan to function"
+  rpm-ostree install make
 fi
 
 set -x

@@ -1,8 +1,26 @@
 # dumb-os &nbsp; [![bluebuild build badge](https://github.com/coolingtool/dumb-os/actions/workflows/build.yml/badge.svg)](https://github.com/coolingtool/dumb-os/actions/workflows/build.yml)
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository.
 
-After setup, it is recommended you update this README to describe your custom image.
+This is my personal OS image for the HP OMEN X16 (HP OMEN by HP Laptop 16-b0xxx). It doesn't have any crazy customizations so far except things I stole from [Bluefin](https://projectbluefin.io/) and [https://bazzite.gg/](Bazzite). I don't know how to build images locally so instead I rely on github.dev and test everything on the main GitHub action. I wouldn't recommend running this image yourself.
+
+# Secure Boot
+It was as easy as having Secure Boot enabled in the bios, running `ujust enroll-secure-boot-key` in Console and following the instructions. I can't test that again though cause the "Clear all Secure Boot keys" button in BIOS doesn't seem to do anything.
+
+## ISO
+
+You can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). Replace `octocat` with `coolingtool` and `weird-os` with `dumb-os`. It should look like this:
+```
+# iso command:
+mkdir ./iso-output
+sudo podman run --rm --privileged --volume ./iso-output:/build-container-installer/build --security-opt label=disable --pull=newer \
+ghcr.io/jasonn3/build-container-installer:latest \
+# iso config:
+IMAGE_REPO=ghcr.io/coolingtool \
+IMAGE_NAME=dumb-os \
+IMAGE_TAG=latest \
+VARIANT=Silverblue # should match the variant your image is based on
+```
 
 ## Installation
 
@@ -29,10 +47,6 @@ To rebase an existing atomic Fedora installation to the latest build:
   ```
 
 The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
-
-## ISO
-
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
 
 ## Verification
 

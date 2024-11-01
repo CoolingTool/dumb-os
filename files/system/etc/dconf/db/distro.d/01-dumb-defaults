@@ -9,3 +9,6 @@ power-button-action='nothing'
 
 [org/gnome/Console]
 shell=['fish']
+last-window-maximised=false
+last-window-size=(960, 577)
+transparency=true

@@ -16,7 +16,9 @@ modules:
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: bling
-    install: ["ublue-update"]
+    install: 
+     - ublue-update
+     - dconf-update-service
 
   - type: script
     scripts:
@@ -43,8 +45,6 @@ modules:
       # (if you want) systemctl enable warp-svc
       # also see https://developers.cloudflare.com/warp-client/get-started/linux/#initial-connection
       - cloudflare-warp
-      # Even though it's on flatpak, I don't think it works correctly sandboxed
-      # - dconf-editor
     remove:
       # To reduce redundancy, use flatpak or brew to install these packages 
       - firefox
@@ -52,16 +52,14 @@ modules:
       - htop
       - nvtop
       - ptyxis
-      # - dconf-editor
-      # - gnome-shell-extension-supergfxctl-gex
 
   - type: brew
     nofile-limits: true
 
+  # TODO: create my own yafti.yml cause i'm not a fan of the default
   - type: yafti
     custom-flatpaks:
       - GNOME Builder: org.gnome.Builder
-      # - Dconf Editor: ca.desrt.dconf-editor
       - Decibles (Audio Player): org.gnome.Decibels
       - Papers (Document Viewer): org.gnome.Papers
       - Showtime (Video Player): org.gnome.Showtime

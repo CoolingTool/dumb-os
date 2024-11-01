@@ -1,0 +1,3 @@
+[org/gnome/settings-daemon/plugins/media-keys/]
+control-center=['Launch2']
+home=['<Super>e']
