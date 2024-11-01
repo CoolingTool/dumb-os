@@ -1,0 +1,30 @@
+diff --git a/omen-fan.py b/omen-fan.py
+index 9290956..aff08bc 100755
+--- a/omen-fan.py
++++ b/omen-fan.py
+@@ -12,7 +12,7 @@ import tomlkit
+ from click_aliases import ClickAliasedGroup
+ 
+ 
+-ECIO_FILE = "/sys/kernel/debug/ec/ec0/io"
++ECIO_FILE = "/dev/ec/ec0/io"
+ IPC_FILE = "/tmp/omen-fand.PID"
+ DEVICE_FILE = "/sys/devices/virtual/dmi/id/product_name"
+ CONFIG_FILE = "/etc/omen-fan/config.toml"
+@@ -95,12 +95,12 @@ def startup_check():
+ 
+ 
+ def load_ec_module():
+-    if "ec_sys" not in str(subprocess.check_output("lsmod")):
+-        subprocess.run(["modprobe", "ec_sys", "write_support=1"], check=True)
++    if "acpi_ec" not in str(subprocess.check_output("lsmod")):
++        subprocess.run(["modprobe", "acpi_ec", "write_support=1"], check=True)
+ 
+     if not bool(os.stat(ECIO_FILE).st_mode & 0o200):
+-        subprocess.run(["modprobe", "-r", "ec_sys"], check=True)
+-        subprocess.run(["modprobe", "ec_sys", "write_support=1"], check=True)
++        subprocess.run(["modprobe", "-r", "acpi_ec"], check=True)
++        subprocess.run(["modprobe", "acpi_ec", "write_support=1"], check=True)
+ 
+ 
+ def update_fan(speed1, speed2):
