@@ -27,8 +27,8 @@ index fbb83cc..8dd921b 100755
    dkms add -m "$MODULE_NAME" -v "$VERSION"
 -  dkms build -m "$MODULE_NAME" -v "$VERSION"
 -  dkms install -m "$MODULE_NAME" -v "$VERSION"
-+  dkms build -m "$MODULE_NAME" -v "$VERSION" -k $KERNEL_VERSION
-+  dkms install -m "$MODULE_NAME" -v "$VERSION" -k $KERNEL_VERSION --no-depmod
++  dkms build -m "$MODULE_NAME" -v "$VERSION" -k $KERNEL_VERSION --verbose
++  dkms install -m "$MODULE_NAME" -v "$VERSION" -k $KERNEL_VERSION --verbose
  
    # module auto-loading
    echo "acpi_ec" > /etc/modules-load.d/acpi_ec.conf
