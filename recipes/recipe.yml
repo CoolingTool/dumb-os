@@ -10,6 +10,10 @@ image-version: 41 # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
+  - type: containerfile
+    snippets:
+      - COPY --from=ghcr.io/ublue-os/akmods-nvidia:main-41  / /tmp/
+
   - type: files
     files:
       - source: system
@@ -23,13 +27,14 @@ modules:
       - omen-fan.sh
       - nautilus-open-any-terminal.sh
 
+  - type: akmods
+    base: main
+    install:
+      - nvidia
+
   - type: rpmfusion
     install:
       - mpd
-
-  - type: akmods
-    install:
-      - nvidia
 
   - type: rpm-ostree
     repos:
@@ -48,7 +53,7 @@ modules:
       # also see https://developers.cloudflare.com/warp-client/get-started/linux/#initial-connection
       - cloudflare-warp
       # Even though it's on flatpak, I don't think it works correctly sandboxed
-      - dconf-editor
+      # - dconf-editor
     remove:
       # To reduce redundancy, use flatpak or brew to install these packages 
       - firefox
