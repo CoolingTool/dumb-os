@@ -1,2 +1,2 @@
 [org/gnome/shell]
-enabled-extensions=['background-logo@fedorahosted.org', 'middleclickclose@paolo.tranquilli.gmail.com', 'appindicatorsupport@rgcjonas.gmail.com', 'pip-on-top@rafostar.github.com', 'app-hider@lynith.dev']
+enabled-extensions=['background-logo@fedorahosted.org', 'middleclickclose@paolo.tranquilli.gmail.com', 'appindicatorsupport@rgcjonas.gmail.com', 'app-hider@lynith.dev']

@@ -4,7 +4,7 @@ name: dumb-os
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/bazzite-gnome-nvidia
+base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 41 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -15,6 +15,9 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: bling
+    install: ["ublue-update"]
+
   - type: script
     scripts:
       - omen-fan.sh
@@ -23,6 +26,10 @@ modules:
   - type: rpmfusion
     install:
       - mpd
+
+  - type: akmods
+    install:
+      - nvidia
 
   - type: rpm-ostree
     repos:
@@ -40,13 +47,30 @@ modules:
       # (if you want) systemctl enable warp-svc
       # also see https://developers.cloudflare.com/warp-client/get-started/linux/#initial-connection
       - cloudflare-warp
-    # remove:
-    #   # To reduce redundancy, use flatpak or brew to install these packages 
-    #   - firefox
-    #   - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-    #   - htop
-    #   - nvtop
-    #   - ptyxis
+      # Even though it's on flatpak, I don't think it works correctly sandboxed
+      - dconf-editor
+    remove:
+      # To reduce redundancy, use flatpak or brew to install these packages 
+      - firefox
+      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      - htop
+      - nvtop
+      - ptyxis
+      # - dconf-editor
+      # - gnome-shell-extension-supergfxctl-gex
+
+  - type: brew
+    nofile-limits: true
+
+  - type: yafti
+    custom-flatpaks:
+      - GNOME Builder: org.gnome.Builder
+      # - Dconf Editor: ca.desrt.dconf-editor
+      - Decibles (Audio Player): org.gnome.Decibels
+      - Papers (Document Viewer): org.gnome.Papers
+      - Showtime (Video Player): org.gnome.Showtime
+      - Mission Center (System Monitor): io.missioncenter.MissionCenter
+      - KolourPaint (KDE Paint Program): org.kde.KolourPaint
 
   - type: gnome-extensions
     install:
@@ -54,8 +78,6 @@ modules:
       - 352 # Close windows with a middle click when in overview mode
       # AppIndicator and KStatusNotifierItem Support: appindicatorsupport@rgcjonas.gmail.com
       - 615 # Adds back system tray icons. Nice to have for legacy apps, but I would avoid relying on it
-      # PiP on top: pip-on-top@rafostar.github.com
-      - 4691 # Silly Wayland.
       # App Hider: app-hider@lynith.dev
       - 5895 # Hide apps in GNOME's app menu.
 
