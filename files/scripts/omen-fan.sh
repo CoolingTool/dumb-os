@@ -27,9 +27,10 @@ set -x
 
 git clone https://github.com/saidsay-so/acpi_ec && cd acpi_ec
 
-git apply $CONFIG_DIRECTORY/scripts/patches/acpi-no-mok.patch
+git apply $CONFIG_DIRECTORY/scripts/patches/acpi-remote-build.patch
 
-ls /lib/modules
+KERNEL_PACKAGE="$(rpm -qa kernel)"
+export KERNEL_VERSION="${KERNEL_PACKAGE#kernel-}"
 
 ./install.sh
 
