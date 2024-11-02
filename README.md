@@ -11,6 +11,8 @@ I wouldn't recommend running this image yourself.
 It was as easy as having Secure Boot enabled in the bios, running `ujust enroll-secure-boot-key` in Console and following the instructions.
 I can't test that again though cause the "Clear all Secure Boot keys" button in BIOS doesn't seem to do anything.
 
+NOTE: I've added the DKMS module [acpi_ec](https://github.com/saidsay-so/acpi_ec) to add support for the [omen-fan](https://github.com/alou-S/omen-fan) script. You will have to have secure boot disabled for now to use that script till I find a way to handle signing. (I don't understand how module signing works at all)
+
 ## ISO
 
 You can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). Replace `octocat` with `coolingtool` and `weird-os` with `dumb-os`. It should look like this:
