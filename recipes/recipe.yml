@@ -45,6 +45,11 @@ modules:
       # (if you want) systemctl enable warp-svc
       # also see https://developers.cloudflare.com/warp-client/get-started/linux/#initial-connection
       - cloudflare-warp
+      # First time I used Fedora was Fedora Workstation 34
+      - f34-backgrounds-gnome
+      - f35-backgrounds-gnome
+      - f38-backgrounds-gnome
+      - f40-backgrounds-gnome
     remove:
       # To reduce redundancy, use flatpak or brew to install these packages 
       - firefox
