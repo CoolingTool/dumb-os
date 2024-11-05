@@ -31,7 +31,6 @@ modules:
 
   - type: rpm-ostree
     repos:
-      - https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo
       - https://copr.fedorainfracloud.org/coprs/atim/nushell/repo/fedora-%OS_VERSION%/atim-nushell-fedora-%OS_VERSION%.repo
     install:
       # King's Cross and some shells. Protip: kgx --set-shell=fish
@@ -42,11 +41,6 @@ modules:
       - nushell
       # Not found on Homebrew
       - android-tools
-      # (if you want) systemctl enable warp-svc
-      # also see https://developers.cloudflare.com/warp-client/get-started/linux/#initial-connection
-      - cloudflare-warp
-      # For the GUI
-      - emacs
     remove:
       # To reduce redundancy, use flatpak or brew to install these packages 
       - firefox
