@@ -1,0 +1,65 @@
+# module configuration, executed in order
+# you can include multiple instances of the same module
+modules:
+  - type: files
+    files:
+      - source: system
+        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+
+  - type: bling
+    install: 
+     - ublue-update
+     - dconf-update-service
+
+  - type: script
+    scripts:
+      - omen-fan.sh
+      - nautilus-open-any-terminal.sh
+
+  - type: rpmfusion
+    install:
+      - mpd
+
+  - type: rpm-ostree
+    repos:
+      - https://copr.fedorainfracloud.org/coprs/atim/nushell/repo/fedora-%OS_VERSION%/atim-nushell-fedora-%OS_VERSION%.repo
+    install:
+      # King's Cross and some shells. Protip: kgx --set-shell=fish
+      - gnome-console
+      - zsh
+      - fish
+      - dash
+      - nushell
+      # Not found on Homebrew
+      - android-tools
+    remove:
+      # To reduce redundancy, use flatpak or brew to install these packages 
+      - firefox
+      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      - htop
+      - nvtop
+      - ptyxis
+
+  - type: brew
+    nofile-limits: true
+
+  # TODO: create my own yafti.yml cause i'm not a fan of the default
+  - type: yafti
+    custom-flatpaks:
+      - GNOME Builder: org.gnome.Builder
+      - Decibles (Audio Player): org.gnome.Decibels
+      - Papers (Document Viewer): org.gnome.Papers
+      - Showtime (Video Player): org.gnome.Showtime
+      - Mission Center (System Monitor): io.missioncenter.MissionCenter
+      - KolourPaint (KDE Paint Program): org.kde.KolourPaint
+
+  - type: gnome-extensions
+    install:
+      # Quick Close in Overview: middleclickclose@paolo.tranquilli.gmail.com
+      - 352 # Close windows with a middle click when in overview mode
+      # AppIndicator and KStatusNotifierItem Support: appindicatorsupport@rgcjonas.gmail.com
+      - 615 # Adds back system tray icons. Nice to have for legacy apps, but I would avoid relying on it
+      # App Hider: app-hider@lynith.dev
+      - 5895 # Hide apps in GNOME's app menu.
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
