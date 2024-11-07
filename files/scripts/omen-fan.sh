@@ -2,15 +2,18 @@
 
 set -oue pipefail
 
+KERNEL_PACKAGE="$(rpm -qa kernel-core)"
+export KERNEL_VERSION="${KERNEL_PACKAGE#kernel-core-}"
+
 # https://wiki.archlinux.org/title/HP_Omen_16-c0140AX#Fan_control_Script
 
 if ! rpm -q python3 &> /dev/null; then
   echo "Installing \"python3\" package, which is necessary for omen-fan to function"
   rpm-ostree install python3
 fi
-if ! rpm -q kernel-devel &> /dev/null; then
-  echo "Installing \"kernel-devel\" package, which is necessary for omen-fan to function"
-  rpm-ostree install kernel-devel
+if ! rpm -q "kernel-devel-$KERNEL_VERSION" &> /dev/null; then
+  echo "Installing \"kernel-devel-$KERNEL_VERSION\" package, which is necessary for omen-fan to function"
+  rpm-ostree install "kernel-devel-$KERNEL_VERSION"
 fi
 if ! rpm -q dkms &> /dev/null; then
   echo "Installing \"dkms\" package, which is necessary for omen-fan to function"
@@ -28,9 +31,6 @@ set -x
 git clone https://github.com/saidsay-so/acpi_ec && cd acpi_ec
 
 git apply $CONFIG_DIRECTORY/scripts/patches/acpi-remote-build.patch
-
-KERNEL_PACKAGE="$(rpm -qa kernel)"
-export KERNEL_VERSION="${KERNEL_PACKAGE#kernel-}"
 
 ./install.sh
 
